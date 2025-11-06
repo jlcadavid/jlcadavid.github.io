@@ -534,6 +534,19 @@
     if (!modal || !form || !input) return;
 
     const isHidden = () => modal.classList.contains('hidden');
+    const isTypingTarget = (el) => {
+      if (!el) return false;
+      const tag = el.tagName;
+      return tag === 'INPUT' || tag === 'TEXTAREA' || el.isContentEditable;
+    };
+    const isShortcutEvent = (evt) => {
+      const key = (evt.key || '').toLowerCase();
+      const code = evt.code;
+      const keyMatch = key === 'c' || code === 'KeyC';
+      const ctrlAlt = evt.ctrlKey && evt.altKey;
+      const metaAlt = evt.metaKey && evt.altKey;
+      return keyMatch && (ctrlAlt || metaAlt);
+    };
     const setHiddenState = (hidden) => {
       modal.classList.toggle('hidden', hidden);
       modal.setAttribute('aria-hidden', hidden ? 'true' : 'false');
@@ -553,18 +566,18 @@
 
     document.addEventListener('keydown', (evt)=>{
       if (evt.repeat) return;
-      if (evt.key === 'Escape' && !isHidden()){
+      if (!isHidden() && evt.key === 'Escape'){
+        evt.preventDefault();
         closeConsole();
         return;
       }
-      const key = evt.key && evt.key.toLowerCase();
-      if (key === 'c' && evt.ctrlKey && evt.altKey){
-        evt.preventDefault();
-        if (isHidden()){
-          openConsole();
-        } else {
-          closeConsole();
-        }
+      if (!isShortcutEvent(evt)) return;
+      if (isTypingTarget(evt.target) && isHidden()) return;
+      evt.preventDefault();
+      if (isHidden()){
+        openConsole();
+      } else {
+        closeConsole();
       }
     });
 

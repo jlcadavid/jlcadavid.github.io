@@ -4,9 +4,9 @@
   const FORMSPREE_URL = '';// set later if desired, else mailto fallback
   // Map CV files per language
   const CV_LINKS = {
-    es: 'assets/cv/Hoja de Vida (Estilo Casa Blanca) - José Luis Martínez Cadavid.pdf',
-    en: 'assets/cv/Hoja de Vida (Estilo Casa Blanca) - EN - José Luis Martínez Cadavid.pdf',
-    pt: 'assets/cv/Hoja de Vida (Estilo Casa Blanca) - EN - José Luis Martínez Cadavid.pdf' // fallback to EN
+    es: 'assets/cv/CV-ES.pdf',
+    en: 'assets/cv/CV-EN.pdf',
+    pt: 'assets/cv/CV-EN.pdf' // fallback to EN
   };
 
   // ---- i18n dictionaries ----
@@ -307,20 +307,20 @@
     const list = $('#certsList'); if (!list) return; list.innerHTML = '';
     const l = lang || localStorage.getItem('lang') || 'es';
     (data.certifications[l]||[]).forEach(item=>{
-      const li = document.createElement('li');
-      li.className = 'text-neutral-400';
-      li.textContent = item;
-      list.appendChild(li);
+      const card = document.createElement('div');
+      card.className = 'card p-4';
+      card.innerHTML = `<p class='text-neutral-300'>${item}</p>`;
+      list.appendChild(card);
     });
   }
   function renderEducation(lang){
     const list = $('#educationList'); if (!list) return; list.innerHTML = '';
     const l = lang || localStorage.getItem('lang') || 'es';
     (data.education[l]||[]).forEach(item=>{
-      const li = document.createElement('li');
-      li.className = 'text-neutral-400';
-      li.textContent = item;
-      list.appendChild(li);
+      const card = document.createElement('div');
+      card.className = 'card p-4';
+      card.innerHTML = `<p class='text-neutral-300'>${item}</p>`;
+      list.appendChild(card);
     });
   }
   function renderArticles(){
@@ -380,7 +380,7 @@
     renderSkills();
     renderCerts();
     renderEducation();
-    renderArticles();
+    // Articles section removed
     setupScrollSpy();
     setupContact();
     await renderProjects();

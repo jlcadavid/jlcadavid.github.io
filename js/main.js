@@ -478,7 +478,7 @@
   document.addEventListener('DOMContentLoaded', async ()=>{
     setYear();
     AOS.init({ duration: 700, easing: 'ease-out', once: true });
-    setupAnalyticsConsent();
+    // setupAnalyticsConsent();
     setupLang();
     renderSkills();
     renderCerts();

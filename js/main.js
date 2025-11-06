@@ -25,7 +25,7 @@
     es: {
       nav: { about: 'Sobre mí', skills: 'Skills', experience: 'Experiencia', projects: 'Proyectos', contact: 'Contacto' },
       hero: {
-        title: 'Desarrollador Back-end · Ciberseguridad',
+        title: 'Desarrollador Full Stack · Ciberseguridad',
         subtitle: 'IAM, gobierno de accesos y SoD. Integraciones Azure AD/Okta, SSO/SAML, MFA. Automatización con Python. Experiencia en entornos corporativos críticos, cumplimiento y AppSec.',
         cta_contact: 'Contactar', cta_cv: 'Ver CV (PDF)'
       },
@@ -34,7 +34,7 @@
         body: 'Soy un profesional analítico, orientado a la mejora continua y a la experiencia del usuario. Cuento con experiencia en gestión integral de identidades y control de accesos (IAM), certificación de accesos, flujos de aprobación, gobernanza y análisis de riesgos con controles SoD. He trabajado en integraciones y soporte sobre Azure AD, Okta, SSO/SAML, MFA y servicios cloud. Automatizo procesos con Python para reducir tiempos operativos y elevar la precisión en la toma de decisiones de seguridad. También participo en revisiones y aprobación de código con foco en IAM y AppSec, garantizando buenas prácticas y control de cambios en ambientes de alta criticidad.'
       },
       skills: { title: 'Tecnologías y competencias', cats: {
-        backend: 'Back-end', iam: 'IAM / Seguridad', cloud: 'Cloud / SSO', data: 'Datos', mobile: 'Móvil', tooling: 'Tooling', languages: 'Idiomas'
+        backend: 'Full Stack', iam: 'IAM / Seguridad', cloud: 'Cloud / SSO', data: 'Datos', mobile: 'Móvil', tooling: 'Tooling', languages: 'Idiomas'
       } },
       experience: { title: 'Experiencia', items: [
         {
@@ -69,7 +69,7 @@
     en: {
       nav: { about: 'About', skills: 'Skills', experience: 'Experience', projects: 'Projects', contact: 'Contact' },
       hero: {
-        title: 'Back-end Developer · Cybersecurity',
+        title: 'Full Stack Developer · Cybersecurity',
         subtitle: 'IAM, access governance and SoD. Azure AD/Okta integrations, SSO/SAML, MFA. Python automation. Corporate-critical environments, compliance and AppSec.',
         cta_contact: 'Contact', cta_cv: 'View CV (PDF)'
       },
@@ -78,7 +78,7 @@
         body: 'Analytical and improvement-driven, with strong UX focus. Experience in Identity and Access Management (IAM), access certification, approval workflows, governance and risk analysis with SoD controls. Hands-on with Azure AD, Okta, SSO/SAML, MFA and cloud services. I automate processes with Python to cut operational time and improve security decision accuracy. I also perform code reviews and approvals with an IAM/AppSec mindset for high-criticality environments.'
       },
       skills: { title: 'Technologies & competencies', cats: {
-        backend: 'Back-end', iam: 'IAM / Security', cloud: 'Cloud / SSO', data: 'Data', mobile: 'Mobile', tooling: 'Tooling', languages: 'Languages'
+        backend: 'Full Stack', iam: 'IAM / Security', cloud: 'Cloud / SSO', data: 'Data', mobile: 'Mobile', tooling: 'Tooling', languages: 'Languages'
       } },
       experience: { title: 'Experience', items: [
         {
@@ -113,7 +113,7 @@
     pt: {
       nav: { about: 'Sobre', skills: 'Habilidades', experience: 'Experiência', projects: 'Projetos', contact: 'Contato' },
       hero: {
-        title: 'Desenvolvedor Back-end · Cibersegurança',
+        title: 'Desenvolvedor Full Stack · Cibersegurança',
         subtitle: 'IAM, governança de acessos e SoD. Integrações Azure AD/Okta, SSO/SAML, MFA. Automação em Python. Ambientes corporativos críticos, compliance e AppSec.',
         cta_contact: 'Contato', cta_cv: 'Ver CV (PDF)'
       },
@@ -122,7 +122,7 @@
         body: 'Profissional analítico e orientado à melhoria contínua, com foco em UX. Experiência em IAM, certificação de acessos, workflows de aprovação, governança e análise de riscos com controles SoD. Atuação com Azure AD, Okta, SSO/SAML, MFA e serviços em nuvem. Automatizo processos com Python para reduzir tempos operacionais e melhorar a precisão em decisões de segurança. Participo de revisões e aprovações de código com foco em IAM e AppSec em ambientes de alta criticidade.'
       },
       skills: { title: 'Tecnologias e competências', cats: {
-        backend: 'Back-end', iam: 'IAM / Segurança', cloud: 'Cloud / SSO', data: 'Dados', mobile: 'Mobile', tooling: 'Ferramentas', languages: 'Idiomas'
+        backend: 'Full Stack', iam: 'IAM / Segurança', cloud: 'Cloud / SSO', data: 'Dados', mobile: 'Mobile', tooling: 'Ferramentas', languages: 'Idiomas'
       } },
       experience: { title: 'Experiência', items: [
         {

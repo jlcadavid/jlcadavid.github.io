@@ -41,7 +41,7 @@
   }
   </script>
 </head>
-<body class="bg-neutral-950 text-neutral-200 selection:bg-neutral-700">
+<body class="bg-neutral-950 text-neutral-200 selection:bg-neutral-700 theme-dark">
   <header class="sticky top-0 z-50 backdrop-blur bg-neutral-950/70 border-b border-neutral-800">
     <div class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
       <a href="#home" class="font-extrabold tracking-tight text-neutral-100">JLMC</a>
@@ -143,6 +143,22 @@
   <footer class="py-8 text-center text-xs text-neutral-500 border-t border-neutral-800">
     <span>&copy; <span id="year"></span> JL Martínez Cadavid</span>
   </footer>
+
+  <div id="themeConsole" class="theme-console hidden" aria-hidden="true">
+    <div class="theme-console__overlay" data-console-close></div>
+    <div class="theme-console__panel" role="dialog" aria-modal="true" aria-labelledby="themeConsoleTitle">
+      <div class="theme-console__header">
+        <span id="themeConsoleTitle">Selector de tema</span>
+        <button type="button" class="theme-console__close" data-console-close aria-label="Cerrar">×</button>
+      </div>
+      <form id="themeConsoleForm" class="theme-console__form">
+        <span class="theme-console__prompt" aria-hidden="true">&gt;</span>
+        <input id="themeConsoleInput" class="theme-console__input" type="text" name="themeCommand" autocomplete="off" placeholder="dark | light | retro" />
+      </form>
+      <p class="theme-console__hint">Usa Enter para aplicar. Esc para cerrar.</p>
+      <p id="themeConsoleFeedback" class="theme-console__feedback" role="status" aria-live="polite"></p>
+    </div>
+  </div>
 
   <div id="analyticsConsent" class="hidden fixed inset-x-4 bottom-4 z-50 max-w-xl mx-auto rounded-lg border border-neutral-700 bg-neutral-900 p-4 shadow-xl">
     <p class="text-sm text-neutral-200">

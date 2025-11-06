@@ -10,6 +10,12 @@
   };
   const PLAUSIBLE_DOMAIN = 'jlcadavid.github.io';
   const ANALYTICS_STORAGE_KEY = 'analyticsConsent';
+  const THEME_STORAGE_KEY = 'uiThemePreference';
+  const THEMES = {
+    dark: 'theme-dark',
+    light: 'theme-light',
+    retro: 'theme-retro'
+  };
   let analyticsEnabled = false;
   let analyticsLoaded = false;
   window.plausible = window.plausible || function(){ (window.plausible.q = window.plausible.q || []).push(arguments); };
@@ -504,8 +510,87 @@
     }
   }
 
+  function applyTheme(themeName, { persist = true } = {}){
+    const key = typeof themeName === 'string' ? themeName.toLowerCase() : '';
+    const className = THEMES[key];
+    if (!className) return false;
+    const { body } = document;
+    Object.values(THEMES).forEach(cls => body.classList.remove(cls));
+    body.classList.add(className);
+    if (persist) localStorage.setItem(THEME_STORAGE_KEY, key);
+    return true;
+  }
+
+  function loadSavedTheme(){
+    const saved = localStorage.getItem(THEME_STORAGE_KEY);
+    if (saved) applyTheme(saved, { persist: false });
+  }
+
+  function initThemeConsole(){
+    const modal = document.getElementById('themeConsole');
+    const form = document.getElementById('themeConsoleForm');
+    const input = document.getElementById('themeConsoleInput');
+    const feedback = document.getElementById('themeConsoleFeedback');
+    if (!modal || !form || !input) return;
+
+    const isHidden = () => modal.classList.contains('hidden');
+    const setHiddenState = (hidden) => {
+      modal.classList.toggle('hidden', hidden);
+      modal.setAttribute('aria-hidden', hidden ? 'true' : 'false');
+      document.body.classList.toggle('theme-console-open', !hidden);
+    };
+
+    const openConsole = () => {
+      setHiddenState(false);
+      input.value = '';
+      if (feedback) feedback.textContent = '';
+      requestAnimationFrame(()=> input.focus());
+    };
+
+    const closeConsole = () => {
+      setHiddenState(true);
+    };
+
+    document.addEventListener('keydown', (evt)=>{
+      if (evt.repeat) return;
+      if (evt.key === 'Escape' && !isHidden()){
+        closeConsole();
+        return;
+      }
+      const key = evt.key && evt.key.toLowerCase();
+      if (key === 'c' && evt.ctrlKey && evt.altKey){
+        evt.preventDefault();
+        if (isHidden()){
+          openConsole();
+        } else {
+          closeConsole();
+        }
+      }
+    });
+
+    modal.addEventListener('click', evt=>{
+      if (evt.target.closest('[data-console-close]')) closeConsole();
+    });
+
+    form.addEventListener('submit', evt=>{
+      evt.preventDefault();
+      const command = input.value.trim().toLowerCase();
+      if (!command){
+        if (feedback) feedback.textContent = '';
+        return;
+      }
+      if (applyTheme(command)){
+        if (feedback) feedback.textContent = `Tema "${command}" activado.`;
+        setTimeout(()=> closeConsole(), 300);
+      } else {
+        if (feedback) feedback.textContent = `Comando "${command}" no reconocido. Usa dark, light o retro.`;
+      }
+    });
+  }
+
   // ---- init ----
   document.addEventListener('DOMContentLoaded', async ()=>{
+    loadSavedTheme();
     setYear();
     AOS.init({ duration: 700, easing: 'ease-out', once: true });
     // setupAnalyticsConsent();
@@ -517,6 +602,7 @@
     setupScrollSpy();
     setupContact();
     setupInteractionTracking();
+    initThemeConsole();
     await renderProjects();
   });
 })();

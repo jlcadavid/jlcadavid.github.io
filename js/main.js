@@ -8,6 +8,11 @@
     en: 'assets/cv/CV-EN.pdf',
     pt: 'assets/cv/CV-EN.pdf' // fallback to EN
   };
+  const PLAUSIBLE_DOMAIN = 'jlcadavid.github.io';
+  const ANALYTICS_STORAGE_KEY = 'analyticsConsent';
+  let analyticsEnabled = false;
+  let analyticsLoaded = false;
+  window.plausible = window.plausible || function(){ (window.plausible.q = window.plausible.q || []).push(arguments); };
 
   // ---- i18n dictionaries ----
   const I18N = {
@@ -178,6 +183,23 @@
     ]
   };
 
+  function loadPlausible(){
+    if (analyticsLoaded) return;
+    analyticsLoaded = true;
+    const script = document.createElement('script');
+    script.defer = true;
+    script.dataset.domain = PLAUSIBLE_DOMAIN;
+    script.src = 'https://plausible.io/js/script.tagged-events.js';
+    document.head.appendChild(script);
+  }
+
+  function trackEvent(name, options){
+    if (!analyticsEnabled) return;
+    if (typeof window.plausible === 'function'){
+      window.plausible(name, options);
+    }
+  }
+
   // ---- helpers ----
   const $ = (sel, ctx=document) => ctx.querySelector(sel);
   const $$ = (sel, ctx=document) => Array.from(ctx.querySelectorAll(sel));
@@ -212,6 +234,7 @@
         $$('.lang-btn').forEach(b=>b.classList.remove('bg-neutral-800'));
         btn.classList.add('bg-neutral-800');
         applyI18n(lang);
+        trackEvent('lang_change', { props: { locale: lang } });
       });
     });
   }
@@ -344,6 +367,7 @@
           const res = await fetch(FORMSPREE_URL,{ method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ name, email, message }) });
           if (!res.ok) throw new Error('send failed');
           msg.textContent = t.contact.ok;
+          trackEvent('contact_submit', { props: { method: 'formspree', lang } });
         }catch{ msg.textContent = t.contact.fail; }
       } else {
         // mailto fallback
@@ -351,6 +375,7 @@
         const body = encodeURIComponent(`From: ${name} <${email}>\n\n${message}`);
         window.location.href = `mailto:jlmc97@gmail.com?subject=${subject}&body=${body}`;
         msg.textContent = t.contact.ok;
+        trackEvent('contact_submit', { props: { method: 'mailto', lang } });
       }
     });
   }
@@ -372,10 +397,88 @@
     sections.forEach(sec=>sec && obs.observe(sec));
   }
 
+//   function setupAnalyticsConsent(){
+//     const banner = $('#analyticsConsent');
+//     if (!banner) return;
+//     const accept = $('#analyticsAccept');
+//     const decline = $('#analyticsDecline');
+//     const stored = localStorage.getItem(ANALYTICS_STORAGE_KEY);
+
+//     if (stored === 'granted'){
+//       analyticsEnabled = true;
+//       loadPlausible();
+//       banner.classList.add('hidden');
+//     } else if (stored === 'denied'){
+//       analyticsEnabled = false;
+//       banner.classList.add('hidden');
+//     } else {
+//       banner.classList.remove('hidden');
+//     }
+
+//     if (accept){
+//       accept.addEventListener('click',()=>{
+//         analyticsEnabled = true;
+//         localStorage.setItem(ANALYTICS_STORAGE_KEY, 'granted');
+//         loadPlausible();
+//         banner.classList.add('hidden');
+//         trackEvent('analytics_consent', { props: { status: 'accepted' } });
+//       });
+//     }
+//     if (decline){
+//       decline.addEventListener('click',()=>{
+//         analyticsEnabled = false;
+//         localStorage.setItem(ANALYTICS_STORAGE_KEY, 'denied');
+//         banner.classList.add('hidden');
+//       });
+//     }
+//   }
+
+  function setupInteractionTracking(){
+    const cvLink = $('#cvLink');
+    if (cvLink){
+      cvLink.addEventListener('click',()=>{
+        const lang = localStorage.getItem('lang') || 'es';
+        trackEvent('cv_open', { props: { lang } });
+      });
+    }
+    const heroContact = document.querySelector('a.btn-primary[data-i18n="hero.cta_contact"]');
+    if (heroContact){
+      heroContact.addEventListener('click',()=>{
+        trackEvent('hero_contact', { props: { target: '#contact' } });
+      });
+    }
+    const nav = $('#mainNav');
+    if (nav){
+      nav.addEventListener('click',evt=>{
+        const link = evt.target.closest('a');
+        if (!link || !nav.contains(link)) return;
+        const section = link.getAttribute('href') || '';
+        trackEvent('nav_click', { props: { section } });
+      });
+    }
+    const projectsGrid = $('#projectsGrid');
+    if (projectsGrid){
+      projectsGrid.addEventListener('click',evt=>{
+        const card = evt.target.closest('a');
+        if (!card || !projectsGrid.contains(card)) return;
+        const titleNode = card.querySelector('.title');
+        const name = titleNode ? titleNode.textContent.trim() : (card.getAttribute('href')||'').trim();
+        trackEvent('project_visit', { props: { name } });
+      });
+    }
+    const moreProjects = $('#moreProjects');
+    if (moreProjects){
+      moreProjects.addEventListener('click',()=>{
+        trackEvent('projects_more', { props: { destination: moreProjects.getAttribute('href') } });
+      });
+    }
+  }
+
   // ---- init ----
   document.addEventListener('DOMContentLoaded', async ()=>{
     setYear();
     AOS.init({ duration: 700, easing: 'ease-out', once: true });
+    setupAnalyticsConsent();
     setupLang();
     renderSkills();
     renderCerts();
@@ -383,6 +486,7 @@
     // Articles section removed
     setupScrollSpy();
     setupContact();
+    setupInteractionTracking();
     await renderProjects();
   });
 })();

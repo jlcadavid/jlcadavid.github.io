@@ -12,6 +12,35 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "José Luis Martínez Cadavid",
+    "givenName": "José Luis",
+    "familyName": "Martínez Cadavid",
+    "jobTitle": "Back-end Developer & Cybersecurity Engineer",
+    "description": "Back-end Developer with a Cybersecurity focus. IAM, SoD, SSO/SAML, MFA and Python automation.",
+    "url": "https://jlcadavid.github.io/portfolio",
+    "image": "https://jlcadavid.github.io/portfolio/assets/img/profile.png",
+    "sameAs": [
+      "https://github.com/jlcadavid",
+      "https://www.linkedin.com/in/jlcadavid/",
+      "mailto:jlmc97@gmail.com"
+    ],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Fundación Universidad del Norte"
+    },
+    "knowsAbout": [
+      "Identity and Access Management",
+      "Cybersecurity",
+      "Python Automation",
+      "Access Governance",
+      "Application Security"
+    ]
+  }
+  </script>
 </head>
 <body class="bg-neutral-950 text-neutral-200 selection:bg-neutral-700">
   <header class="sticky top-0 z-50 backdrop-blur bg-neutral-950/70 border-b border-neutral-800">
@@ -115,6 +144,16 @@
   <footer class="py-8 text-center text-xs text-neutral-500 border-t border-neutral-800">
     <span>&copy; <span id="year"></span> JL Martínez Cadavid</span>
   </footer>
+
+  <div id="analyticsConsent" class="hidden fixed inset-x-4 bottom-4 z-50 max-w-xl mx-auto rounded-lg border border-neutral-700 bg-neutral-900 p-4 shadow-xl">
+    <p class="text-sm text-neutral-200">
+      Utilizo analíticas sin cookies para entender el uso de este portafolio. ¿Autorizas el envío de eventos anónimos?
+    </p>
+    <div class="mt-3 flex flex-wrap gap-2">
+      <button id="analyticsAccept" class="btn-primary text-sm w-full sm:w-auto">Aceptar</button>
+      <button id="analyticsDecline" class="btn-secondary text-sm w-full sm:w-auto">Rechazar</button>
+    </div>
+  </div>
 
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script defer src="js/main.js"></script>

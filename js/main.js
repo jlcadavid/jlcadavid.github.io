@@ -177,9 +177,9 @@
     },
     articles: [],
     manualProjects: [
-      { name: 'TBOT', desc: 'Trading Automation Bot - Private.', url: '#projects', language: 'Python' },
-      { name: "Engage - What's your plan?", desc: 'Best plans, best prices - Private.', url: '#projects', language: 'Dart' },
-      { name: 'VISAutomator', desc: 'Automate your VISA application - Private.', url: '#projects', language: 'Python' }
+      { name: 'TBOT', desc: 'Trading Automation Bot · Private.', url: '', language: 'Python' },
+      { name: "Engage - What's your plan?", desc: 'Best plans, best prices · Private.', url: '', language: 'Dart' },
+      { name: 'VISAutomator', desc: 'Automate your VISA application · Private.', url: '', language: 'Python' }
     ]
   };
 

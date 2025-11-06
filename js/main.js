@@ -172,9 +172,9 @@
     },
     articles: [],
     manualProjects: [
-      { name: 'tbot', desc: 'Trading Automation (2023–Presente). Enlace pendiente.', url: '#', language: 'TBD' },
-      { name: "engage - what's your plan?", desc: 'Proyecto personal (2019–Presente). Enlace pendiente.', url: '#', language: 'TBD' },
-      { name: 'visautomator', desc: 'Proyecto indicado por el autor (enlace pendiente).', url: '#', language: 'TBD' }
+      { name: 'TBOT', desc: 'Trading Automation Bot.', url: '#', language: 'Python' },
+      { name: "Engage - What's your plan?", desc: 'Best plans, best prices.', url: '#', language: 'Dart' },
+      { name: 'VISAutomator', desc: 'Automate your VISA application.', url: '#', language: 'Python' }
     ]
   };
 

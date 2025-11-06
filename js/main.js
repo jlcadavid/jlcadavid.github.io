@@ -52,7 +52,13 @@
       certs: { title: 'Certificaciones' },
       education: { title: 'Educación' },
       articles: { title: 'Artículos' },
-      contact: { title: 'Contacto', send: 'Enviar mensaje', ok: 'Gracias, abre tu cliente de correo para enviar.', fail: 'No fue posible enviar. Intenta con el enlace de correo.' }
+      contact: {
+        title: 'Contacto',
+        send: 'Enviar mensaje',
+        ok: 'Gracias, abre tu cliente de correo para enviar.',
+        fail: 'No fue posible enviar. Intenta con el enlace de correo.',
+        placeholders: { name: 'Nombre', email: 'Email', message: 'Mensaje' }
+      }
     },
     en: {
       nav: { about: 'About', skills: 'Skills', experience: 'Experience', projects: 'Projects', contact: 'Contact' },
@@ -90,7 +96,13 @@
       certs: { title: 'Certifications' },
       education: { title: 'Education' },
       articles: { title: 'Articles' },
-      contact: { title: 'Contact', send: 'Send message', ok: 'Thanks! Your email client will open to send.', fail: 'Unable to send. Try the email link.' }
+      contact: {
+        title: 'Contact',
+        send: 'Send message',
+        ok: 'Thanks! Your email client will open to send.',
+        fail: 'Unable to send. Try the email link.',
+        placeholders: { name: 'Name', email: 'Email', message: 'Message' }
+      }
     },
     pt: {
       nav: { about: 'Sobre', skills: 'Habilidades', experience: 'Experiência', projects: 'Projetos', contact: 'Contato' },
@@ -128,7 +140,13 @@
       certs: { title: 'Certificações' },
       education: { title: 'Educação' },
       articles: { title: 'Artigos' },
-      contact: { title: 'Contato', send: 'Enviar mensagem', ok: 'Obrigado! Seu cliente de e-mail abrirá para enviar.', fail: 'Não foi possível enviar. Tente o link de e-mail.' }
+      contact: {
+        title: 'Contato',
+        send: 'Enviar mensagem',
+        ok: 'Obrigado! Seu cliente de e-mail abrirá para enviar.',
+        fail: 'Não foi possível enviar. Tente o link de e-mail.',
+        placeholders: { name: 'Nome', email: 'Email', message: 'Mensagem' }
+      }
     }
   };
 
@@ -221,6 +239,7 @@
     setCvLink(lang);
     renderCerts(lang);
     renderEducation(lang);
+    setContactPlaceholders(lang);
   }
 
   function setupLang(){
@@ -348,6 +367,17 @@
   }
   function renderArticles(){
     const list = $('#articlesList'); if (!list) return; list.innerHTML = '';
+  }
+
+  function setContactPlaceholders(lang){
+    const form = $('#contactForm');
+    if (!form) return;
+    const t = I18N[lang] || I18N.es;
+    const placeholders = t.contact && t.contact.placeholders;
+    if (!placeholders) return;
+    if (form.name) form.name.setAttribute('placeholder', placeholders.name || '');
+    if (form.email) form.email.setAttribute('placeholder', placeholders.email || '');
+    if (form.message) form.message.setAttribute('placeholder', placeholders.message || '');
   }
 
   // ---- contact form ----

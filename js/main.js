@@ -23,17 +23,23 @@
         body: 'Soy un profesional analítico, orientado a la mejora continua y a la experiencia del usuario. Cuento con experiencia en gestión integral de identidades y control de accesos (IAM), certificación de accesos, flujos de aprobación, gobernanza y análisis de riesgos con controles SoD. He trabajado en integraciones y soporte sobre Azure AD, Okta, SSO/SAML, MFA y servicios cloud. Automatizo procesos con Python para reducir tiempos operativos y elevar la precisión en la toma de decisiones de seguridad. También participo en revisiones y aprobación de código con foco en IAM y AppSec, garantizando buenas prácticas y control de cambios en ambientes de alta criticidad.'
       },
       skills: { title: 'Tecnologías y competencias', cats: {
-        backend: 'Back-end', iam: 'IAM / Seguridad', cloud: 'Cloud / SSO', data: 'Datos', mobile: 'Móvil', tooling: 'Tooling'
+        backend: 'Back-end', iam: 'IAM / Seguridad', cloud: 'Cloud / SSO', data: 'Datos', mobile: 'Móvil', tooling: 'Tooling', languages: 'Idiomas'
       } },
       experience: { title: 'Experiencia', items: [
         {
-          title: 'Cybersecurity SSr Engineer · MercadoLibre', period: 'Año(s)',
+          title: 'Cybersecurity SSr Engineer · MercadoLibre', period: '2021–2025',
           bullets: [
             'Certificación de accesos, flujos de aprobación y gobernanza (SoD).',
             'Integraciones e interoperabilidad: Azure AD, Okta, SSO/SAML, MFA y servicios cloud.',
             'Automatización de tareas de acceso y monitoreo con Python.',
             'Revisión/aprobación de cambios a producción con foco en IAM y AppSec.',
             'Colaboración con equipos globales técnicos y de negocio (ES/EN).'
+          ]
+        },
+        {
+          title: 'Prácticas Profesionales · Promigas S.A. E.S.P.', period: '2020–2021',
+          bullets: [
+            'Estudiante en práctica – Seguridad de la Información.'
           ]
         }
       ]},
@@ -55,17 +61,23 @@
         body: 'Analytical and improvement-driven, with strong UX focus. Experience in Identity and Access Management (IAM), access certification, approval workflows, governance and risk analysis with SoD controls. Hands-on with Azure AD, Okta, SSO/SAML, MFA and cloud services. I automate processes with Python to cut operational time and improve security decision accuracy. I also perform code reviews and approvals with an IAM/AppSec mindset for high-criticality environments.'
       },
       skills: { title: 'Technologies & competencies', cats: {
-        backend: 'Back-end', iam: 'IAM / Security', cloud: 'Cloud / SSO', data: 'Data', mobile: 'Mobile', tooling: 'Tooling'
+        backend: 'Back-end', iam: 'IAM / Security', cloud: 'Cloud / SSO', data: 'Data', mobile: 'Mobile', tooling: 'Tooling', languages: 'Languages'
       } },
       experience: { title: 'Experience', items: [
         {
-          title: 'Cybersecurity SSr Engineer · MercadoLibre', period: 'Year(s)',
+          title: 'Cybersecurity SSr Engineer · MercadoLibre', period: '2021–2025',
           bullets: [
             'Access certification, approval workflows and governance (SoD).',
             'Integrations and interoperability: Azure AD, Okta, SSO/SAML, MFA and cloud services.',
             'Python-based automation for access and monitoring tasks.',
             'Code review/approval to production with IAM/AppSec focus.',
             'Collaboration with global teams (EN/ES).'
+          ]
+        },
+        {
+          title: 'Professional Internship · Promigas S.A. E.S.P.', period: '2020–2021',
+          bullets: [
+            'Information Security intern.'
           ]
         }
       ]},
@@ -87,17 +99,23 @@
         body: 'Profissional analítico e orientado à melhoria contínua, com foco em UX. Experiência em IAM, certificação de acessos, workflows de aprovação, governança e análise de riscos com controles SoD. Atuação com Azure AD, Okta, SSO/SAML, MFA e serviços em nuvem. Automatizo processos com Python para reduzir tempos operacionais e melhorar a precisão em decisões de segurança. Participo de revisões e aprovações de código com foco em IAM e AppSec em ambientes de alta criticidade.'
       },
       skills: { title: 'Tecnologias e competências', cats: {
-        backend: 'Back-end', iam: 'IAM / Segurança', cloud: 'Cloud / SSO', data: 'Dados', mobile: 'Mobile', tooling: 'Ferramentas'
+        backend: 'Back-end', iam: 'IAM / Segurança', cloud: 'Cloud / SSO', data: 'Dados', mobile: 'Mobile', tooling: 'Ferramentas', languages: 'Idiomas'
       } },
       experience: { title: 'Experiência', items: [
         {
-          title: 'Cybersecurity SSr Engineer · MercadoLibre', period: 'Ano(s)',
+          title: 'Cybersecurity SSr Engineer · MercadoLibre', period: '2021–2025',
           bullets: [
             'Certificação de acessos, workflows de aprovação e governança (SoD).',
             'Integrações: Azure AD, Okta, SSO/SAML, MFA e serviços em nuvem.',
             'Automação em Python para tarefas de acesso e monitoramento.',
             'Revisão/aprovação de código para produção com foco em IAM/AppSec.',
             'Colaboração com equipes globais (PT/ES/EN).'
+          ]
+        },
+        {
+          title: 'Estágio Profissional · Promigas S.A. E.S.P.', period: '2020–2021',
+          bullets: [
+            'Estagiário em Segurança da Informação.'
           ]
         }
       ]},
@@ -117,15 +135,45 @@
       { key: 'cloud', items: ['Azure AD', 'Okta', 'SSO/SAML', 'MFA', 'Cloud'] },
       { key: 'data', items: ['Pandas', 'NumPy', 'ETL', 'Dashboards'] },
       { key: 'mobile', items: ['Android', 'Flutter'] },
-      { key: 'tooling', items: ['Git', 'CI/CD', 'Linux', 'Docker'] }
+      { key: 'tooling', items: ['Git', 'CI/CD', 'Linux', 'Docker'] },
+      { key: 'languages', items: ['Español (Nativo)', 'Inglés (C1, FCE)', 'Alemán (A2)'] }
     ],
     experience: I18N.es.experience.items, // structure shared; content from i18n
-    certifications: [],
-    education: [],
+    certifications: {
+      es: [
+        'Beca "Orgullo Caribe" — Fundación Universidad del Norte (2015)',
+        'Cambridge English FCE — Nivel C1 (2015)'
+      ],
+      en: [
+        '“Orgullo Caribe” Scholarship — Universidad del Norte (2015)',
+        'Cambridge English FCE — C1 (2015)'
+      ],
+      pt: [
+        'Bolsa “Orgullo Caribe” — Universidad del Norte (2015)',
+        'Cambridge English FCE — C1 (2015)'
+      ]
+    },
+    education: {
+      es: [
+        'Ingeniería de Sistemas y Computación — Fundación Universidad del Norte (2015–2021). Puerto Colombia, Atlántico, Colombia',
+        'Bachillerato — Fundación Colegio Bilingüe de Valledupar (2013–2015). Valledupar, Cesar, Colombia',
+        'Educación primaria & bachillerato — Liceo de Cervantes - Norte (2002–2013). Bogotá D.C., Colombia'
+      ],
+      en: [
+        'BSc in Systems and Computer Engineering — Universidad del Norte (2015–2021). Puerto Colombia, Atlántico, Colombia',
+        'High School — Fundación Colegio Bilingüe de Valledupar (2013–2015). Valledupar, Cesar, Colombia',
+        'Primary & Secondary — Liceo de Cervantes - Norte (2002–2013). Bogotá D.C., Colombia'
+      ],
+      pt: [
+        'Engenharia de Sistemas e Computação — Universidad del Norte (2015–2021). Puerto Colombia, Atlántico, Colômbia',
+        'Ensino Médio — Fundação Colégio Bilíngue de Valledupar (2013–2015). Valledupar, Cesar, Colômbia',
+        'Educação primária e secundária — Liceo de Cervantes - Norte (2002–2013). Bogotá D.C., Colômbia'
+      ]
+    },
     articles: [],
     manualProjects: [
-      { name: 'tbot', desc: 'Herramienta/Proyecto indicado por el autor (enlace pendiente).', url: '#', language: 'TBD' },
-      { name: "engage - what's your plan?", desc: 'Proyecto indicado por el autor (enlace pendiente).', url: '#', language: 'TBD' },
+      { name: 'tbot', desc: 'Trading Automation (2023–Presente). Enlace pendiente.', url: '#', language: 'TBD' },
+      { name: "engage - what's your plan?", desc: 'Proyecto personal (2019–Presente). Enlace pendiente.', url: '#', language: 'TBD' },
       { name: 'visautomator', desc: 'Proyecto indicado por el autor (enlace pendiente).', url: '#', language: 'TBD' }
     ]
   };
@@ -149,6 +197,8 @@
     renderExperience(t.experience.items);
     // Section headings already updated via data-i18n
     setCvLink(lang);
+    renderCerts(lang);
+    renderEducation(lang);
   }
 
   function setupLang(){
@@ -170,7 +220,7 @@
     const link = document.getElementById('cvLink');
     if (!link) return;
     const href = CV_LINKS[lang] || CV_LINKS.es;
-    link.setAttribute('href', href);
+    link.setAttribute('href', encodeURI(href));
   }
 
   // ---- sections renderers ----
@@ -253,12 +303,25 @@
     });
   }
 
-  function renderCerts(){
+  function renderCerts(lang){
     const list = $('#certsList'); if (!list) return; list.innerHTML = '';
-    // Placeholder; add items later
+    const l = lang || localStorage.getItem('lang') || 'es';
+    (data.certifications[l]||[]).forEach(item=>{
+      const li = document.createElement('li');
+      li.className = 'text-neutral-400';
+      li.textContent = item;
+      list.appendChild(li);
+    });
   }
-  function renderEducation(){
+  function renderEducation(lang){
     const list = $('#educationList'); if (!list) return; list.innerHTML = '';
+    const l = lang || localStorage.getItem('lang') || 'es';
+    (data.education[l]||[]).forEach(item=>{
+      const li = document.createElement('li');
+      li.className = 'text-neutral-400';
+      li.textContent = item;
+      list.appendChild(li);
+    });
   }
   function renderArticles(){
     const list = $('#articlesList'); if (!list) return; list.innerHTML = '';

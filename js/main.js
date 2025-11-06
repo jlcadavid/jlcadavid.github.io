@@ -2,6 +2,12 @@
 (function(){
   const GITHUB_USER = 'jlcadavid';
   const FORMSPREE_URL = '';// set later if desired, else mailto fallback
+  // Map CV files per language
+  const CV_LINKS = {
+    es: 'assets/cv/Hoja de Vida (Estilo Casa Blanca) - José Luis Martínez Cadavid.pdf',
+    en: 'assets/cv/Hoja de Vida (Estilo Casa Blanca) - EN - José Luis Martínez Cadavid.pdf',
+    pt: 'assets/cv/Hoja de Vida (Estilo Casa Blanca) - EN - José Luis Martínez Cadavid.pdf' // fallback to EN
+  };
 
   // ---- i18n dictionaries ----
   const I18N = {
@@ -132,6 +138,8 @@
 
   function applyI18n(lang){
     const t = I18N[lang] || I18N.es;
+    // set document language attr
+    document.documentElement.setAttribute('lang', lang);
     $$('[data-i18n]').forEach(el => {
       const key = el.getAttribute('data-i18n');
       const val = key.split('.').reduce((acc,k)=>acc&&acc[k], t);
@@ -140,6 +148,7 @@
     // Experience rendering uses localized items
     renderExperience(t.experience.items);
     // Section headings already updated via data-i18n
+    setCvLink(lang);
   }
 
   function setupLang(){
@@ -155,6 +164,13 @@
         applyI18n(lang);
       });
     });
+  }
+
+  function setCvLink(lang){
+    const link = document.getElementById('cvLink');
+    if (!link) return;
+    const href = CV_LINKS[lang] || CV_LINKS.es;
+    link.setAttribute('href', href);
   }
 
   // ---- sections renderers ----

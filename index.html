@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>José Luis Martínez Cadavid · Backend & Cybersecurity</title>
+  <meta name="description" content="Back-end Developer with a Cybersecurity focus. IAM, SoD, SSO/SAML, MFA and Python automation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+</head>
+<body class="bg-neutral-950 text-neutral-200 selection:bg-neutral-700">
+  <header class="sticky top-0 z-50 backdrop-blur bg-neutral-950/70 border-b border-neutral-800">
+    <div class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
+      <a href="#home" class="font-extrabold tracking-tight text-neutral-100">JLMC</a>
+      <nav class="hidden md:flex gap-5 text-sm" id="mainNav">
+        <a href="#about" class="hover:text-white" data-i18n="nav.about"></a>
+        <a href="#skills" class="hover:text-white" data-i18n="nav.skills"></a>
+        <a href="#experience" class="hover:text-white" data-i18n="nav.experience"></a>
+        <a href="#projects" class="hover:text-white" data-i18n="nav.projects"></a>
+        <a href="#contact" class="hover:text-white" data-i18n="nav.contact"></a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <button class="lang-btn px-2 py-1 text-xs rounded border border-neutral-700" data-lang="es">ES</button>
+        <button class="lang-btn px-2 py-1 text-xs rounded border border-neutral-700" data-lang="en">EN</button>
+        <button class="lang-btn px-2 py-1 text-xs rounded border border-neutral-700" data-lang="pt">PT</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <!-- HERO -->
+    <section class="max-w-6xl mx-auto px-4 py-20 grid md:grid-cols-2 gap-10 items-center" data-aos="fade-up">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight text-white">
+          <span data-i18n="hero.title"></span>
+        </h1>
+        <p class="mt-4 text-neutral-400" data-i18n="hero.subtitle"></p>
+        <div class="mt-6 flex gap-3">
+          <a href="#contact" class="btn-primary" data-i18n="hero.cta_contact"></a>
+          <a href="assets/cv/cv.pdf" class="btn-secondary" target="_blank" rel="noopener" data-i18n="hero.cta_cv"></a>
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <div class="relative w-48 h-48 md:w-60 md:h-60 rounded-full overflow-hidden shadow-2xl ring-1 ring-neutral-800">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,#1f2937,transparent_60%),radial-gradient(circle_at_70%_70%,#0a0a0a,transparent_60%)]"></div>
+          <img id="profileImage" src="assets/img/profile.jpg" alt="Profile" class="w-full h-full object-cover mix-blend-luminosity opacity-90" onerror="this.style.display='none'" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section" data-aos="fade-up">
+      <h2 class="section-title" data-i18n="about.title"></h2>
+      <p class="section-text" data-i18n="about.body"></p>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section" data-aos="fade-up">
+      <h2 class="section-title" data-i18n="skills.title"></h2>
+      <div id="skillsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section" data-aos="fade-up">
+      <h2 class="section-title" data-i18n="experience.title"></h2>
+      <div id="experienceList" class="space-y-4"></div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section" data-aos="fade-up">
+      <h2 class="section-title" data-i18n="projects.title"></h2>
+      <div id="projectsGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      <div class="text-center mt-6">
+        <a id="moreProjects" href="https://github.com/jlcadavid?tab=repositories" class="btn-secondary" target="_blank" rel="noopener" data-i18n="projects.more"></a>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications" class="section" data-aos="fade-up">
+      <h2 class="section-title" data-i18n="certs.title"></h2>
+      <ul id="certsList" class="space-y-2"></ul>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="section" data-aos="fade-up">
+      <h2 class="section-title" data-i18n="education.title"></h2>
+      <ul id="educationList" class="space-y-2"></ul>
+    </section>
+
+    <!-- ARTICLES -->
+    <section id="articles" class="section" data-aos="fade-up">
+      <h2 class="section-title" data-i18n="articles.title"></h2>
+      <ul id="articlesList" class="space-y-2"></ul>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section" data-aos="fade-up">
+      <h2 class="section-title" data-i18n="contact.title"></h2>
+      <form id="contactForm" class="max-w-xl mx-auto space-y-3">
+        <input type="text" name="name" class="input" placeholder="Nombre" required />
+        <input type="email" name="email" class="input" placeholder="Email" required />
+        <textarea name="message" class="input h-32" placeholder="Mensaje" required></textarea>
+        <button type="submit" class="btn-primary w-full" data-i18n="contact.send"></button>
+        <p id="formMsg" class="text-center text-sm text-neutral-400"></p>
+      </form>
+      <div class="mt-8 flex items-center justify-center gap-4">
+        <a href="https://github.com/jlcadavid" class="link">GitHub</a>
+        <a href="https://www.linkedin.com/in/jlcadavid/" class="link">LinkedIn</a>
+        <a href="mailto:jlmc97@gmail.com" class="link">Email</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="py-8 text-center text-xs text-neutral-500 border-t border-neutral-800">
+    <span>&copy; <span id="year"></span> JL Martínez Cadavid</span>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script defer src="js/main.js"></script>
+</body>
+</html>

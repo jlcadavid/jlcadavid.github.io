@@ -1,25 +1,34 @@
 {
   "name": "portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "Professional portfolio for José Luis Martínez Cadavid, AI Full-Stack Engineer and founder of WV SOFTWARE.",
   "main": "index.js",
   "scripts": {
     "build:css": "tailwindcss -i ./src/tailwind.css -o ./css/style.css --minify",
     "watch:css": "tailwindcss -i ./src/tailwind.css -o ./css/style.css --watch",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "check": "node --check ./js/loader.js && node --check ./js/main.js && node --check ./js/legal.js && node --check ./js/company.js && node --check ./js/pong.js && npm run build:css",
+    "test": "npm run check"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jlcadavid/jlcadavid.github.io.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "ai-engineer",
+    "full-stack-engineer",
+    "cybersecurity",
+    "agentic-systems",
+    "mcp",
+    "rag",
+    "quantitative-development"
+  ],
+  "author": "José Luis Martínez Cadavid",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
     "url": "https://github.com/jlcadavid/jlcadavid.github.io/issues"
   },
-  "homepage": "https://github.com/jlcadavid/jlcadavid.github.io#readme",
+  "homepage": "https://jlcadavid.github.io/",
   "devDependencies": {
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",

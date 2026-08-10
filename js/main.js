@@ -257,7 +257,10 @@
       },
       contact: {
         eyebrow: 'Contact',
-        title: 'Let’s build something that stands the test of time!',
+        title: 'Let’s build something GREAT that stands the test of time!',
+        title_prefix: 'Let’s build something',
+        title_emphasis: 'GREAT',
+        title_suffix: 'that stands the test of time!',
         intro: 'Open to Senior AI Full-Stack, Applied AI, Backend/AI, and selected Quant Developer or Financial Systems roles—as well as carefully scoped WV SOFTWARE engagements.',
         next_step: 'What happens next: we clarify fit, define the smallest useful first step, and document the scope before any work begins.',
         send: 'Send message',
@@ -484,7 +487,10 @@
       },
       contact: {
         eyebrow: 'Contacto',
-        title: '¡Construyamos algo que supere la barrera del tiempo!',
+        title: '¡Construyamos algo GRANDE que supere la barrera del tiempo!',
+        title_prefix: '¡Construyamos algo',
+        title_emphasis: 'GRANDE',
+        title_suffix: 'que supere la barrera del tiempo!',
         intro: 'Abierto a roles Senior AI Full-Stack, Applied AI, Backend/AI y oportunidades seleccionadas como Quant Developer o Financial Systems, además de proyectos bien definidos con WV SOFTWARE.',
         next_step: '¿Qué sigue? Aclaramos el encaje, definimos el primer paso útil más pequeño y documentamos el alcance antes de iniciar cualquier trabajo.',
         send: 'Enviar mensaje',
@@ -606,7 +612,7 @@
         win: 'Você venceu.', lose: 'A IA venceu desta vez.', hint: 'Psst… toque 3 vezes'
       },
       contact: {
-        eyebrow: 'Contato', title: 'Vamos construir algo que supere a barreira do tempo!', intro: 'Aberto a oportunidades em AI Full-Stack, Applied AI, Backend/AI e sistemas quantitativos, além de projetos com a WV SOFTWARE.', next_step: 'O próximo passo: esclarecemos o encaixe, definimos o menor primeiro passo útil e documentamos o escopo antes de iniciar qualquer trabalho.',
+        eyebrow: 'Contato', title: 'Vamos construir algo INCRÍVEL que supere a barreira do tempo!', title_prefix: 'Vamos construir algo', title_emphasis: 'INCRÍVEL', title_suffix: 'que supere a barreira do tempo!', intro: 'Aberto a oportunidades em AI Full-Stack, Applied AI, Backend/AI e sistemas quantitativos, além de projetos com a WV SOFTWARE.', next_step: 'O próximo passo: esclarecemos o encaixe, definimos o menor primeiro passo útil e documentamos o escopo antes de iniciar qualquer trabalho.',
         send: 'Enviar mensagem', ok: 'Abrindo seu cliente de e-mail.', email_cta: 'Solicitar orçamento por e-mail', whatsapp_cta: 'Conversar pelo WhatsApp',
         label_name: 'Nome', label_email: 'E-mail', label_message: 'Projeto ou problema a resolver', email_subject: 'Orçamento de projeto — WV SOFTWARE', whatsapp_message: 'Olá José Luis, gostaria de conversar sobre um orçamento de projeto com a WV SOFTWARE.',
         placeholders: { name: 'Nome', email: 'Email', message: 'O que você está construindo?' }
@@ -660,6 +666,9 @@
       const key = element.getAttribute('data-i18n');
       const value = key.split('.').reduce((current, segment) => current && current[segment], dictionary);
       if (typeof value === 'string') element.textContent = value;
+    });
+    $$('[data-glitch-word]').forEach((element) => {
+      element.setAttribute('data-glitch-word', element.textContent.trim());
     });
   }
 
@@ -1191,10 +1200,12 @@
   function setupHeaderScroll() {
     const header = $('.site-header');
     if (!header) return;
+    const topThreshold = 16;
     let updateFrame = null;
     const update = () => {
       updateFrame = null;
-      const scrollTop = Math.max(0, window.scrollY || document.documentElement.scrollTop || 0);
+      const measuredScrollTop = Math.max(0, window.scrollY || document.documentElement.scrollTop || 0);
+      const scrollTop = measuredScrollTop <= topThreshold ? 0 : measuredScrollTop;
       const progress = Math.min(1, scrollTop / 360);
       header.style.setProperty('--header-alpha', String(0.04 + (progress * 0.9)));
       header.style.setProperty('--header-blur', `${3 + (progress * 15)}px`);
@@ -1484,6 +1495,8 @@
 
   function setupHeroMotion() {
     if (!window.gsap || prefersReducedMotion()) return;
+    const topThreshold = 16;
+    const compactViewport = window.matchMedia('(max-width: 860px)').matches;
     window.gsap.from('.hero-copy > .eyebrow, .hero-title, .hero-subtitle, .hero-actions', {
       autoAlpha: 0,
       y: 26,
@@ -1492,8 +1505,9 @@
       stagger: 0.09,
       delay: 0.12
     });
-    window.gsap.set('.scroll-cue', { autoAlpha: 0, y: 8 });
-    window.gsap.to('.scroll-cue', { autoAlpha: 1, y: 0, duration: 0.72, delay: 3.2, ease: 'power2.out' });
+    window.gsap.set('.scroll-cue', { autoAlpha: 1 });
+    window.gsap.set('.scroll-cue-intro', { autoAlpha: 0, y: 8 });
+    window.gsap.to('.scroll-cue-intro', { autoAlpha: 1, y: 0, duration: 0.72, delay: 3.2, ease: 'power2.out' });
     window.gsap.to('.scroll-cue-line', { y: 8, scaleY: 0.48, duration: 0.95, ease: 'sine.inOut', repeat: -1, yoyo: true });
 
     if (!window.ScrollTrigger) return;
@@ -1503,7 +1517,10 @@
     }
 
     const restoreHeroAtTop = () => {
-      if (window.scrollY > 2 || document.body.classList.contains('pong-active')) return;
+      const scrollTop = Math.max(0, window.scrollY || document.documentElement.scrollTop || 0);
+      if (scrollTop > topThreshold || document.body.classList.contains('pong-active')) return;
+      const scrubTween = heroScrollTimeline && heroScrollTimeline.scrollTrigger && heroScrollTimeline.scrollTrigger.getTween();
+      if (scrubTween) scrubTween.kill();
       if (heroScrollTimeline) heroScrollTimeline.progress(0);
       window.gsap.set('.hero-inner', { clearProps: 'opacity,visibility,transform,translate,rotate,scale' });
       window.gsap.set('.hero-media', { autoAlpha: 1 });
@@ -1517,9 +1534,9 @@
         trigger: '.hero',
         start: 'top top',
         end: 'bottom top+=72',
-        scrub: 0.55,
+        scrub: compactViewport ? true : 0.55,
         onUpdate: (self) => {
-          if (self.direction < 0 && self.scroll() <= 2) restoreHeroAtTop();
+          if (self.scroll() <= topThreshold) restoreHeroAtTop();
         }
       }
     })
@@ -1530,17 +1547,19 @@
 
     if (!heroTopGuardBound) {
       heroTopGuardBound = true;
-      let hasMovedAway = false;
       let resetFrame = null;
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 96) hasMovedAway = true;
-        if (!hasMovedAway || window.scrollY > 2) return;
+      const requestTopRestore = () => {
+        const scrollTop = Math.max(0, window.scrollY || document.documentElement.scrollTop || 0);
+        if (scrollTop > topThreshold) return;
         if (resetFrame) window.cancelAnimationFrame(resetFrame);
         resetFrame = window.requestAnimationFrame(() => {
           restoreHeroAtTop();
-          hasMovedAway = false;
         });
-      }, { passive: true });
+      };
+      window.addEventListener('scroll', requestTopRestore, { passive: true });
+      window.addEventListener('touchend', requestTopRestore, { passive: true });
+      window.addEventListener('pageshow', requestTopRestore);
+      if (window.visualViewport) window.visualViewport.addEventListener('resize', requestTopRestore, { passive: true });
     }
   }
 
@@ -1549,6 +1568,10 @@
       setupHeaderScroll();
       setupHeroCarousel();
       setupCursorGlow();
+      const scrollCue = $('.scroll-cue');
+      const scrollCueIntro = $('.scroll-cue-intro');
+      if (scrollCue) scrollCue.style.opacity = '1';
+      if (scrollCueIntro) scrollCueIntro.style.opacity = '1';
       return;
     }
     if (window.ScrollTrigger) window.gsap.registerPlugin(window.ScrollTrigger);

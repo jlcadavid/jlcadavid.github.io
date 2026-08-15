@@ -35,6 +35,7 @@
   --service-overlay-hover-side: 0.28;
   --service-overlay-hover-fade: 0.02;
   --button-text: #ffffff;
+  --section-title-content-gap: 2rem;
 }
 
 * { box-sizing: border-box; }
@@ -437,7 +438,7 @@ body.theme-light .theme-icon-moon { display: block; }
 .portrait-caption strong { color: var(--ink); font-size: 0.92rem; font-weight: 600; }
 .portrait-caption > span:last-child { color: var(--muted); font-size: 0.78rem; }
 .about-copy .section-title { max-width: 20ch; }
-.about-copy .section-text { margin-top: 1.8rem; }
+.about-copy .section-text { margin-top: var(--section-title-content-gap); }
 .about-principle {
   display: grid;
   grid-template-columns: 9.5rem minmax(0, 1fr);
@@ -470,6 +471,8 @@ body.theme-light .theme-icon-moon { display: block; }
 }
 .section-text { max-width: 68ch; margin: 0; color: var(--muted); line-height: 1.78; }
 .section-text-wide { max-width: 72ch; font-size: 1.04rem; }
+#skills > .section-title + #skillsGrid,
+#experience > .section-title + #experienceList { margin-top: var(--section-title-content-gap); }
 
 .section-note { margin: 1.5rem 0 0; padding-left: 1rem; border-left: 2px solid var(--accent); color: var(--faint); font-size: 0.82rem; line-height: 1.65; filter: drop-shadow(-0.25rem 0 0.55rem rgba(var(--accent-rgb), 0.16)); }
 
@@ -891,7 +894,7 @@ html[lang="pt"] .contact-great { width: 5.2em; }
   text-align: right;
 }
 .company-contact-title .easter-hint-copy { transform: rotate(3deg); transform-origin: right center; }
-.contact-copy .section-text { margin-top: 1.5rem; }
+.contact-copy .section-text { margin-top: var(--section-title-content-gap); }
 .contact-reassurance {
   max-width: 58ch;
   margin: 1rem 0 0;
@@ -1263,6 +1266,7 @@ body.theme-light.company-site .company-service:hover::before { background: linea
   .about-portrait { width: min(100%, 31rem); }
   .section { width: min(100% - 2rem, 44rem); }
   .section-heading, .contact-layout { grid-template-columns: 1fr; }
+  .section-heading { row-gap: max(var(--section-title-content-gap), 7vw); }
   .case-reveal-inner { grid-template-columns: 1fr; padding-left: 5rem; }
   .experience-reveal-inner { padding-right: 2rem; padding-left: 5rem; }
   .footer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -1306,7 +1310,7 @@ body.theme-light.company-site .company-service:hover::before { background: linea
   .about-principle { grid-template-columns: 1fr; gap: 0.7rem; }
   .about-section { row-gap: 4.5rem; }
   .section { width: min(100% - 2rem, 44rem); padding: 4.5rem 0; }
-  .section-heading { gap: 1.5rem; margin-bottom: 2.5rem; }
+  .section-heading { column-gap: 1.5rem; row-gap: var(--section-title-content-gap); margin-bottom: 2.5rem; }
   .approach-proof { grid-template-columns: 1fr; margin: 2.5rem 0 0; }
   .approach-proof div { padding: 0.8rem 0; }
   .approach-proof div + div { padding-left: 0; border-top: 1px solid var(--ring); border-left: 0; }
